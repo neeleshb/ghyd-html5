@@ -1,0 +1,1299 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Original Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+Modified by: Neelesh Bodas (neelesh.bodas@gmail.com)
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>g|india</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/add2.css">
+
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0;height:740px; width:1680px;">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/google_developers_logo.png"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title id="mainTitle">
+	    <span id="titleOther5" class="titleOther5">5</span>
+		<span id="titleH" class="titleH">H</span>
+		<span id="titleH2" class="titleH2">ere's </span>
+		<span id="titleT" class="titleT">T</span>
+		<span id="titleT2" class="titleT2">hat </span>
+	    <span id="titleM" class="titleM">M</span>
+		<span id="titleM2" class="titleM2">agical </span>
+		<span id="titleL" class="titleL">L</span>
+		<span id="titleL2" class="titleL2">anguage </span>
+		<span id="title5" class="title5">5</span>
+	    <br/></h1>
+      <h2 data-config-subtitle>More Magic Moments</h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+  <slide>
+    <hgroup>
+      <h2>HTML5</h2>
+      <h3>Taking web development to the next level.</h3>
+</hgroup>
+<article>
+      <ul class="build">
+		<li>Fast. Secure. Responsive. Interactive.<br/><br/></li>
+		<li>Stunningly beautiful. Lot of support for animation and graphics.<br/><br/></li>
+		<li>Provides ways to create as complex apps as desktop allows.<br/><br/></li>
+		<li>Bridges the gap between offline and online, 2D and 3D, server and client.<br/><br/></li>
+		<li>Much easier development.<br/><br/></li>
+		<li>Browsers more secure than ever.<br/><br/></li>
+		</ul>
+</article>
+</slide>
+<!-- Whats in it -->
+<slide hidden>
+	<hgroup>
+      <h2>HTML5</h2>
+      <h3>What's in it?</h3>
+    </hgroup>
+<article>
+<img src="images/html5logo.png" width="300" height="300" class="html5Image"></img>
+<div class="html5_groups html5_css3">CSS3</div>
+<div class="html5_groups html5_conn">Connectivity</div>
+<div class="html5_groups html5_dev">Device Access</div>
+<div class="html5_groups html5_perf">Performance & Integration</div>
+<div class="html5_groups html5_3d">3D, Graphics & Effects</div>
+<div class="html5_groups html5_off">Offline & Storage</div>
+<div class="html5_groups html5_mult">Multimedia</div>
+<div class="html5_groups html5_sem">Semantics</div>
+</article>
+</slide>
+	
+ <!-- magic moment 1 -->
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Magic Moment 1</h2>
+      <h3><br/></h3>
+
+      <div class="onestar"></div>
+    </hgroup>
+  </slide>
+<!-- Rainbow Spiral Demo -->
+  <slide>
+    <hgroup>
+      <h2>The Rainbow Spiral</h2>
+    </hgroup>
+    <article>
+		<div class="rainbow1" id="rainbowOuter"></div>
+		<div class="rainbowTextDiv">
+			<span class="rainbowText">Number of figures:&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" class="rainbowSlider" id="rainbowSlider1" value="60" max="200" min="4" onchange="renderRainbowEffect();"/>
+			<br/>
+			<span class="rainbowText">Angle of rotation:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="range" class="rainbowSlider" id="rainbowSlider2" value="15" max="360" min="0" onchange="renderRainbowEffect();"/>
+		
+		</div>
+		
+
+    </article>
+  </slide>
+<script>
+function renderRainbowEffect() {
+  var numFig = document.getElementById("rainbowSlider1").value; 
+  var initialWidth = 400;
+  var rainbowDiff = parseInt(initialWidth / parseInt(numFig));
+  var rainbowAngleInitial = document.getElementById("rainbowSlider2").value;
+  
+  var rainbowAngle = rainbowAngleInitial;
+  var rainbowParentDiv = document.getElementById("rainbowOuter");
+  rainbowParentDiv.innerHTML = "";
+  
+  var center = 200;
+  
+ for (var rainbowWidth = initialWidth; rainbowWidth > 0; rainbowWidth -= rainbowDiff) {
+	var rainbowNode = document.createElement("div");
+	rainbowNode.classList.add("rainbow");
+	rainbowNode.style.position = "absolute";
+
+    rainbowNode.style.top = (center - rainbowWidth/2) + "px";
+	rainbowNode.style.left = (center - rainbowWidth/2) + "px";
+	rainbowNode.style.height = rainbowWidth + "px";
+	rainbowNode.style.width = rainbowWidth + "px";
+    rainbowNode.style.webkitTransform = "rotate(" + rainbowAngle + "deg)";
+    rainbowAngle = (parseInt(rainbowAngle) + parseInt(rainbowAngleInitial)) % 360;
+    document.getElementById("rainbowOuter").appendChild(rainbowNode);
+	rainbowNode.style.display = "block";
+    rainbowWidth -= rainbowDiff;
+  }
+} 
+
+renderRainbowEffect();
+</script>
+  <!-- Rainbow spiral explained -->
+  <slide>
+    <hgroup>
+      <h2>The Rainbow Spiral - explained.</h2>
+      <h3>CSS3 gradients, CSS3 transforms.</h3>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="css">
+&lt;style&gt;
+    div { 
+        background-image: linear-gradient(left top, red 0%, orange 16%, yellow 33%, 
+            green 50%, blue 67%, indigo 84%, violet 100%); 
+        transform: rotate(20deg);
+    }
+&lt;/style&gt;
+</pre>
+    <div class="rainbowExplain"></div>
+  </article>
+  </slide>
+<!-- magic moment 2 -->
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Magic Moment 2</h2>
+      <h3><br/></h3>
+      <div class="twostar"></div>
+    </hgroup>
+  </slide>
+  <slide>
+	<hgroup>
+		<h2>Me, Me, Me.</h2>
+	</hgroup>
+	<article>
+		<div style="z-index:2;position:absolute;top:110px;border:8px outset gold;width:600px;height:450px;margin-left:50px;">
+			<video autoplay id="mevideo"  style="z-index:-1;position:absolute;top:0px;width:600px;height:450px;margin-left:0px;margin-top:0px;" width="600" height="450" >
+		    </video>
+		</div>
+		<input type="button" id="camerabtn" value="Switch On Camera" style="font-size:32px;position:absolute;top: 540px;left:750px;" onclick="toggleCamera();">
+		<input type="button" id="camerabtn" value="Take Snapshot" style="font-size:32px;position:absolute;top: 540px;left:900px;" onclick="takeSnapshot();">
+		<span class="cameraControls">
+			grayscale: <span id="cgrayscaleid">0</span>&nbsp;&nbsp;&nbsp;<input type="range" style="position:absolute;left:180px;" id="cgrayscale" max="100" min="0" value="0" onchange="cameraFilterChange(this);"/><br/><br/>
+			sepia: <span id="csepiaid">0</span>&nbsp;&nbsp;&nbsp;<input type="range" style="position:absolute;left:180px;" id="csepia" max="100" min="0" value="0" onchange="cameraFilterChange(this);"/><br/><br/>
+			saturate: <span id="csaturateid">1</span>&nbsp;&nbsp;&nbsp;<input type="range" style="position:absolute;left:180px;" id="csaturate" max="2000" min="0" value="100" onchange="cameraFilterChange(this);"/><br/><br/>
+			hue-rotate: <span id="chuerotateid">0</span>deg&nbsp;&nbsp;&nbsp;<input type="range" style="position:absolute;left:180px;" id="chuerotate" max="36000" min="0" value="0" onchange="cameraFilterChange(this);"/><br/><br/>
+			invert: <span id="cinvertid">0</span>&nbsp;&nbsp;&nbsp;<input type="range" style="position:absolute;left:180px;" id="cinvert" max="100" min="0" value="0" onchange="cameraFilterChange(this);"/><br/><br/>
+			opacity: <span id="copacityid">1</span>&nbsp;&nbsp;&nbsp;<input type="range" style="position:absolute;left:180px;" id="copacity" max="100" min="0" value="100" onchange="cameraFilterChange(this);"/><br/><br/>
+			brightness: <span id="cbrightnessid">0</span>&nbsp;&nbsp;&nbsp;<input type="range" style="position:absolute;left:180px;" id="cbrightness" max="100" min="0" value="0" onchange="cameraFilterChange(this);"/><br/><br/>
+			contrast: <span id="ccontrastid">1</span>&nbsp;&nbsp;&nbsp;<input type="range" style="position:absolute;left:180px;" id="ccontrast" max="300" min="0" value="100" onchange="cameraFilterChange(this);"/><br/><br/>
+			blur: <span id="cblurid">0</span>px&nbsp;&nbsp;&nbsp;<input type="range" style="position:absolute;left:180px;" id="cblur" max="5000" min="0" value="0" onchange="cameraFilterChange(this);"/><br/><br/>
+			
+		</span>
+		<canvas id="mecanvas" height="450" width="600" style="width:600px;height:450px;display:none;"></canvas>
+		<img src="" style="border:1px solid #202020;position:absolute;top:443px;left:910px;" height="75" width="100" id="meimg" />
+	</article>	
+  </slide>
+<script>
+var cameraOn = false;
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+window.URL = window.URL || window.webkitURL;
+
+function toggleCamera() {
+	if(cameraOn == false) {
+	  navigator.getUserMedia({video: true}, successFunction, failureFunction);	
+	  cameraOn = true;
+	  document.getElementById("camerabtn").value = "Switch Off Camera";
+	} else {
+		document.getElementById("mevideo").src = "";
+		cameraOn = false;
+		document.getElementById("camerabtn").value = "Switch On Camera";
+	} 
+}
+
+
+function successFunction(localMediaStream) {
+    var video = document.querySelector('#mevideo');
+    video.src = window.URL.createObjectURL(localMediaStream);
+};
+
+function failureFunction() {
+	alert("Failed to load media stream");
+}
+
+function takeSnapshot() {
+	if (cameraOn == false) {
+		return;
+	}
+	var canvas = document.querySelector('#mecanvas');
+	var ctx = canvas.getContext('2d');
+	ctx.clearRect(0, 0, 600, 450);
+	ctx.drawImage(document.getElementById("mevideo"), 0, 0);
+	document.querySelector('#meimg').src = canvas.toDataURL('image/png');
+	document.querySelector('#meimg').style.webkitFilter = document.getElementById("mevideo").style.webkitFilter;
+}
+
+</script>
+<!-- me me me - realized -->
+<slide>
+	<hgroup>
+		<h2>Me, Me, Me - realized.</h2>
+		<h3>getUserMedia</h3>
+	</hgroup>
+	<article>
+<pre class="prettyprint" data-lang="html">
+&lt;video autoplay width="600" height="480" src=""&gt;&lt;/video&gt;
+&lt;canvas width="600" height="480" style="display:none;" &gt;&lt;/canvas&gt;
+&lt;img src="" width="100" height="80" &gt;&lt;/img&gt;
+</pre>
+<pre class="prettyprint" data-lang="javascript">
+<b>navigator.getUserMedia = navigator.webkitGetUserMedia;
+window.URL = window.webkitURL;</b>
+
+function switchOnCamera() {
+    <b>navigator.getUserMedia({video: true;}, successFn, failureFn);</b>
+}
+
+function successFn(localMediaStream) {
+	var video = document.querySelector("video");
+	video.src = <b>window.URL.createObjectURL(localMediaStream);</b>
+}
+</pre>
+   </article>
+</slide>
+<!-- me me me - filters -->
+<slide>
+	<hgroup>
+		<h2>Me, Me, Me - realized.</h2>
+		<h3>CSS3 filters</h3>
+	</hgroup>
+	<article>
+<pre class="prettyprint" data-lang="css">
+ video {
+   <b>-webkit-filter</b>: 
+        grayscale(0.4)
+        sepia(0.6)
+        saturate(2.3)
+        hue-rotate(90deg)
+        invert(0.1)
+        opacity(1) 
+        brightness(0)
+        contrast(1) 
+        blur(0)
+        drop-shadow(10px 10px 10px #008888);
+}
+</pre>
+<img src="images/peacock.jpeg" id="filterex" class="filterex2"></image>
+<span style="position:absolute;top: 545px;left:525px;"><input style="font-size:22px;" type="checkbox" onchange="var filterx = document.querySelector('#filterex'); if (this.checked) filterx.classList.add('filterex'); else filterx.classList.remove('filterex');"></a><span style="font-size:16px;color: #800000;">&nbsp;Apply filters&nbsp;</span>
+  </article>
+  </slide>
+<!-- me me me - canvas -->
+  <slide>
+	<hgroup>
+		<h2>Me, Me, Me - realized.</h2>
+		<h3>canvas</h3>
+	</hgroup>
+   <article>
+<pre class="prettyprint" data-lang="javascript">
+function takePhoto() {
+    var canvas = document.querySelector('canvas');
+    var ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, 600, 450);
+    ctx.drawImage(document.querySelector("video"), 0, 0);
+    document.querySelector('img').src = canvas.toDataURL('image/png');
+}
+</pre>
+  </article>
+</slide>
+ <!-- magic moment 3 -->
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Magic Moment 3</h2>
+      <h3><br/></h3>
+
+      <div class="threestar"></div>
+    </hgroup>
+  </slide>
+<!-- Rotating Cube -->
+  <slide id="rotatingCubeSlide">
+    <hgroup>
+      <h2>The Rotating Cube</h2>
+    </hgroup>
+
+    <article>
+	 <div id="cubeOuter" class="cubeOuter">
+	  <div id="cubeInner" class="cubeInner">
+	    <div id="faceA" class="cubeFace cubeFaceA">
+	    </div>
+	    <div id="faceB" class="cubeFace cubeFaceB">
+	    <div style="height:130px;"></div>HTML5 Rocks!	
+	    </div>
+	    <div id="faceC" class="cubeFace cubeFaceC">
+			<video width="240" height="360" loop autoplay controls muted>
+			  <source src="files/chrome.webm" type="video/webm" />
+			</video>    	
+	    </div>
+	    <div id="faceD" class="cubeFace cubeFaceD"><div style="height:50px;"></div>
+		  <img src="images/AngryRedBird.png" width="200"></img>
+	    	
+	
+	    </div>
+	
+	    <div id="faceE" class="cubeFace cubeFaceE">&nbsp;opaque</div>
+	    <div id="faceF" class="cubeFace cubeFaceF"></div>
+	  </div>
+     </div>
+	</article>
+<script>
+setInterval(
+  function() {
+    document.getElementById('faceF').innerHTML = "<br/><br/>" + new Date().toString().split(" ")[4];
+  }
+  , 1000);
+
+</script>
+  </slide>
+<!-- Rotating Cube unfolded - 1 -->
+  <slide>
+    <hgroup>
+      <h2>The Rotating Cube - unfolded.</h2>
+      <h3>step 1: Get the HTML and basic CSS right.</h3>
+    </hgroup>
+<article>
+<pre class="prettyprint" data-lang="css">
+&lt;div id="cubeOuter" class="cubeOuter"&gt;
+    &lt;div class="cubeFace cubeFaceA"&gt; 1 &lt;/div&gt;
+    &lt;!-- other five faces go here --&gt;
+&lt;/div&gt;
+</pre>
+<pre class="prettyprint" data-lang="css">
+.cubeFace {
+    border: 2px solid black; border-radius: 5px; height: 100%; width: 100%;
+    position: absolute; left: 0px; top: 0px;
+}
+.cubeFaceA {
+    background: rgba(255, 0, 0, 0.5);
+}
+/* Other five styles go here. */
+</pre>
+</article>
+<div class="cubeExample cubeExample1">1</div>
+<div class="cubeExample cubeExample2">2</div>
+<div class="cubeExample cubeExample3">3</div>
+<div class="cubeExample cubeExample4">4</div>
+<div class="cubeExample cubeExample5">5</div>
+<div class="cubeExample cubeExample6">6</div>
+
+ </slide>
+<!-- Rotating Cube unfolded - 2 -->
+  <slide>
+    <hgroup>
+      <h2>The Rotating Cube - unfolded.</h2>
+      <h3>step 2: Get the rotations right.</h3>
+    </hgroup>
+<article>
+<pre class="prettyprint" data-lang="css">
+.cubeFaceA { -webkit-transform: rotateY(0deg); }
+.cubeFaceB { -webkit-transform: rotateY(-90deg); }
+.cubeFaceC { -webkit-transform: rotateY(180deg); }
+.cubeFaceD { -webkit-transform: rotateY(90deg); }
+.cubeFaceE { -webkit-transform: rotateX(90deg); }
+.cubeFaceF { -webkit-transform: rotateX(-90deg); }
+</pre>
+</article>
+<div class="cubeExample cubeExample11">1</div>
+<div class="cubeExample cubeExample21">2</div>
+<div class="cubeExample cubeExample31">3</div>
+<div class="cubeExample cubeExample41">4</div>
+<div class="cubeExample cubeExample51">5</div>
+<div class="cubeExample cubeExample61">6</div>
+
+
+<div class="cubeEx cubeEx1">1</div>
+<div class="cubeEx cubeEx2">2</div>
+<div class="cubeEx cubeEx3">3</div>
+<div class="cubeEx cubeEx4">4</div>
+<div class="cubeEx cubeEx5">5</div>
+<div class="cubeEx cubeEx6">6</div>
+<script>
+    document.querySelector(".cubeEx6").addEventListener("mouseover", function() {
+	document.querySelector(".cubeEx6").classList.add("cubeEx6H"); 
+	document.querySelector(".cubeEx5").classList.add("cubeEx5H"); 
+	document.querySelector(".cubeEx4").classList.add("cubeEx4H"); 
+	document.querySelector(".cubeEx3").classList.add("cubeEx3H"); 
+	document.querySelector(".cubeEx2").classList.add("cubeEx2H"); 
+	document.querySelector(".cubeEx1").classList.add("cubeEx1H"); 
+}, false);
+    document.querySelector(".cubeEx6").addEventListener("mouseout", function() {
+	document.querySelector(".cubeEx6").classList.remove("cubeEx6H"); 
+	document.querySelector(".cubeEx5").classList.remove("cubeEx5H"); 
+	document.querySelector(".cubeEx4").classList.remove("cubeEx4H"); 
+	document.querySelector(".cubeEx3").classList.remove("cubeEx3H"); 
+	document.querySelector(".cubeEx2").classList.remove("cubeEx2H"); 
+	document.querySelector(".cubeEx1").classList.remove("cubeEx1H"); 
+}, false);
+</script>
+</slide>
+<!-- Rotating Cube unfolded - 3 -->
+  <slide>
+    <hgroup>
+      <h2>The Rotating Cube - unfolded.</h2>
+      <h3>step 3: Get the perspective right.</h3>
+    </hgroup>
+<article>
+<pre class="prettyprint" data-lang="css">
+.cubeOuter {
+    -webkit-perspective: 1200;
+    -webkit-perspective-origin: 300px 200px;
+    -webkit-transition: -webkit-transform 2s;
+}
+.cubeFaceA { -webkit-transform: rotateY(0deg) <b>translateZ(150px);</b> }
+.cubeFaceB { -webkit-transform: rotateY(-90deg) <b>translateZ(150px);</b> }
+.cubeFaceC { -webkit-transform: rotateY(180deg) <b>translateZ(150px);</b> }
+.cubeFaceD { -webkit-transform: rotateY(90deg) <b>translateZ(150px);</b> }
+.cubeFaceE { -webkit-transform: rotateX(90deg) <b>translateZ(150px);</b> }
+.cubeFaceF { -webkit-transform: rotateY(-90deg) <b>translateZ(150px);</b> }
+</pre>
+</article>
+<div class="cubeFxOuter">
+<div class="cubeFx cubeFx1">1</div>
+<div class="cubeFx cubeFx2">2</div>
+<div class="cubeFx cubeFx3">3</div>
+<div class="cubeFx cubeFx4">4</div>
+<div class="cubeFx cubeFx5">5</div>
+<div class="cubeFx cubeFx6">6</div> 
+</div>
+<span style="position:absolute; top: 540px; left: 890px; font-size:16px;">
+	  <a href="http://jsbin.com/iwodux/4/edit" style="margin-left:-130px;">non-commutative transformations</a><div style="height:10px;"></div>
+	 <input type="checkbox" onclick="var nd = document.querySelector('.cubeFxOuter'); this.checked ? nd.classList.add('cubeFxOuterP') : nd.classList.remove('cubeFxOuterP');"  />use perspective.<div style="height:5px;"></div>
+	 <input type="checkbox" onclick="var nd = document.querySelector('.cubeFxOuter'); this.checked ? nd.classList.add('cubeFxOuterT') : nd.classList.remove('cubeFxOuterT');"  />transform origin.
+</span>
+</slide>
+<script>
+    document.querySelector(".cubeFx6").addEventListener("mouseover", function() {
+	document.querySelector(".cubeFx6").classList.add("cubeFx6H"); 
+	document.querySelector(".cubeFx5").classList.add("cubeFx5H"); 
+	document.querySelector(".cubeFx4").classList.add("cubeFx4H"); 
+	document.querySelector(".cubeFx3").classList.add("cubeFx3H"); 
+	document.querySelector(".cubeFx2").classList.add("cubeFx2H"); 
+	document.querySelector(".cubeFx1").classList.add("cubeFx1H"); 
+}, false);
+    document.querySelector(".cubeFx6").addEventListener("mouseout", function() {
+	document.querySelector(".cubeFx6").classList.remove("cubeFx6H"); 
+	document.querySelector(".cubeFx5").classList.remove("cubeFx5H"); 
+	document.querySelector(".cubeFx4").classList.remove("cubeFx4H"); 
+	document.querySelector(".cubeFx3").classList.remove("cubeFx3H"); 
+	document.querySelector(".cubeFx2").classList.remove("cubeFx2H"); 
+	document.querySelector(".cubeFx1").classList.remove("cubeFx1H"); 
+}, false);
+
+</script>
+<!-- Rotating cube unfolded - 4 -->
+  <slide>
+    <hgroup>
+      <h2>The Rotating Cube - unfolded.</h2>
+      <h3>step 4: Get the JavaScript right.</h3>
+    </hgroup>
+<article>
+<pre class="prettyprint" data-lang="javascript" style="line-height:1.3em;">
+var rotateX = 0, rotateY = 0, rotateZ = 0, diff = 90;
+function rotateCube(e) { 
+    switch(e.keyCode) {
+        case 49: rotateY -= diff; break;
+        case 50: rotateY += diff; break;
+        case 51: rotateX += diff; break;
+        case 52: rotateX -= diff; break;
+        case 53: rotateZ += diff; break;
+        case 54: rotateZ -= diff; break;
+    }
+    var rX = "rotateX(" + rotateX + "deg) "; 
+    var rY = "rotateY(" + rotateY + "deg) ";
+    var rZ = "rotateZ(" + rotateZ + "deg) ";
+    $("cubeOuter").style.webkitTransform = rX + rY + rZ;
+}
+document.addEventListener('keypress', rotateCube, false);
+</pre>
+</article>
+</slide>
+<!-- magic moment 4 -->
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Magic Moment 4</h2>
+      <h3><br/></h3>
+      <div class="onestar"></div>
+    </hgroup>
+  </slide>
+  <!-- You are here. -->
+  <slide>
+	<hgroup>
+		<h2>You Are Here!</h2>
+	</hgroup>
+	<input type="button" value="Show location" class="showLocationBtn" onclick="showLocation();" />
+	   <span id="geolog" class="geoLog"></span>
+	    <div id="geomap" class="geoMapExample">
+	       <img src="http://maps.google.com/maps/api/staticmap?center=37.4419,-94.1419&amp;zoom=1&amp;scale=2&amp;size=400x200&amp;sensor=true" />
+	    </div>
+  </slide>	
+<!-- you are here - grounded. -->
+<slide>
+	<hgroup>
+		<h2>You Are Here - grounded.</h2>
+		<h3>navigator.geoLocation, google Maps APIs</h3>
+	</hgroup>
+	<article>
+<pre class="prettyprint" data-lang="javascript">
+<b>navigator.geolocation.getCurrentPosition</b>(
+    function(position) { // Success handler.
+        var acc = <b>position.coords.accuracy;</b>
+        var lat = <b>position.coords.latitude;</b>
+        var log = <b>position.coords.longitude;</b>
+        var geoMap = document.getElementById("mapDiv");
+        var map = new google.maps.Map(geoMap, { });
+        var latLng = new google.maps.LatLng(lat, log);
+        new google.maps.Marker({position: latLng, map: map});
+        map.setCenter(latLng);
+        map.setZoom(15);
+    },
+    function(evt) {  // Error handler.
+    }
+);
+</pre>
+</article>
+</slide>
+<!-- magic moment 5 -->
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Magic Moment 5</h2>
+      <h3><br/></h3>
+      <div class="twostar"></div>
+    </hgroup>
+  </slide> 
+<!-- Bend It Like Beckham -->
+<slide>
+	<hgroup>
+		<h2>
+			Bend It Like Beckham
+		</h2>
+	</hgroup>
+	<article>
+		<div>
+		   <div id="orientationWrap" style="position:absolute; top: 180px; left: 350px;">
+		      <div class="layer" style="position: absolute; left: 0px; top: 0px; transform: rotateY(0deg) rotateX(0deg); "><img src="images/chrome-layer-01.png"></div>
+		       <div class="layer" style="position: absolute; left: 0px; top: 0px; transform: rotateY(0deg) rotateX(0deg); "><img src="images/chrome-layer-02.png"></div>
+		       <div class="layer" style="position: absolute; left: 0px; top: 0px; transform: rotateY(0deg) rotateX(0deg); "><img src="images/chrome-layer-03.png"></div>
+		       <div class="layer" style="position: absolute; left: 0px; top: 0px; transform: rotateY(0deg) rotateX(0deg); "><img src="images/chrome-layer-04.png"></div>
+		       <div class="layer" style="position: absolute; left: 0px; top: 0px; transform: rotateY(0deg) rotateX(0deg); "><img src="images/chrome-layer-05.png"></div>
+		   </div>
+	   </div>
+	</article>
+  </slide>
+<!-- Bend It Like Beckham - straightened-->
+<slide>
+  <hgroup>
+      <h2>Bend It Like Beckham - straightened.</h2>
+      <h3>device orientation, CSS3 transforms.</h3>
+    </hgroup>
+<br/>
+<pre class="prettyprint" data-lang="javascript">
+window.addEventListener('deviceorientation', function(event) {
+    var alpha = event.alpha; // direction.
+    var beta = event.beta, // front-to-back tit.
+    var gamma = event.gamma; // left-to-right tilt.
+    var layers = document.querySelectorAll('.layer');
+    for (var i = 0, zindex = 1, elem; elem = layers[i]; ++i, ++zindex) {
+        var x = Math.round(1.5 * gamma * zindex);
+        var y = Math.round(1.5 * beta * zindex);
+        elem.style.left = x.toString() + 'px';
+        elem.style.top = y.toString() + 'px';
+        elem.style.webkitTransform = 
+            'rotateY(' + (-2.0 * gamma) + 'deg) rotateX(' + (-2.0 * beta) + 'deg)';
+    }
+}, false);
+</pre>
+  </slide>
+
+<!-- magic moment 6 -->
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Magic Moment 6</h2>
+      <h3><br/></h3>
+
+      <div class="threestar"></div>
+    </hgroup>
+  </slide>
+  <slide>
+	<hgroup>
+		<h2>The Photo Wheel</h2>
+	</hgroup>
+	<article>
+			<div class="ex9outer">
+			   <div class="ex9inner">
+			     <img ondrop="drop1(event);" id="imgdr1" ondragover="allowDrop1(event);"  width="340"></img>
+			     <img ondrop="drop1(event);" id="imgdr2" ondragover="allowDrop1(event);"  width="340"></img>
+			     <img ondrop="drop1(event);" id="imgdr3" ondragover="allowDrop1(event);"   width="340"></img>
+			     <img ondrop="drop1(event);" id="imgdr4" ondragover="allowDrop1(event);"   width="340"></img>
+			     <img ondrop="drop1(event);" id="imgdr5" ondragover="allowDrop1(event);"   width="340"></img>
+			   </div>
+			</div>	
+		<div id='images'>
+			<img draggable="true" ondragstart="dragPic(event);" id="imgan1" src="images/whale.jpeg" width="80"></img>
+			<img draggable="true" ondragstart="dragPic(event);" id="imgan2" src="images/elephant.jpeg" width="80"></img>
+			<img draggable="true" ondragstart="dragPic(event);" id="imgan3" src="images/lion.jpeg" width="80"></img>
+			<img draggable="true" ondragstart="dragPic(event);" id="imgan4" src="images/peacock.jpeg" width="80"></img>
+			<img draggable="true" ondragstart="dragPic(event);" id="imgan5" src="images/cobra.jpeg" width="80"></img>
+			<img draggable="true" ondragstart="dragPic(event);" id="imgan6" src="images/hawk.jpeg" width="80"></img>
+			<img draggable="true" ondragstart="dragPic(event);" id="imgan7" src="images/crocodile.jpeg" width="80"></img>
+			<img draggable="true" ondragstart="dragPic(event);" id="imgan8" src="images/stingray.jpeg" width="80"></img>
+			<img draggable="true" ondragstart="dragPic(event);" id="imgan9" src="images/shark.jpeg" width="80"></img>
+			<img draggable="true" ondragstart="dragPic(event);" id="imgan10" src="images/chameleon.jpeg" width="80"></img>
+		</div>	
+	</article>
+	<script>
+
+	function allowDrop1(ev) {
+	  ev.preventDefault();
+	  ev.target.parentNode.style.webkitAnimationPlayState  = "paused";
+	}
+	function dragPic(ev) {
+	  ev.dataTransfer.setData("Text",ev.target.id);
+	}
+	function drop1(ev) {
+	  ev.preventDefault();
+	  var data=ev.dataTransfer.getData("Text");
+	  ev.target.src = document.getElementById(data).src;
+	  ev.target['data-src'] = data;
+	  var id = ev.target.id + "@" + ev.target.src;
+	  var imageNodes = document.querySelectorAll(".ex9inner img");
+	  var sources = "";
+	  for (var i = 0; i < imageNodes.length; ++i) {
+		sources += imageNodes[i]['data-src'] + "&";
+	  }
+	  var url = window.location.pathname + "#d=" + sources;
+	  history.pushState(null, null, url);
+	}
+
+	function setDefaultImages() {
+		var imageNodes = document.querySelectorAll(".ex9inner img");
+		var sources = document.querySelectorAll("#images img");
+		for (var i = 0; i < imageNodes.length; ++i) {
+			imageNodes[i].src = sources[i].src;
+			imageNodes[i]['data-src'] = sources[i].id;
+		}
+	}
+	setDefaultImages();
+
+	window.addEventListener('popstate', function(e) {
+		var state = e.state;
+
+		var d = window.location.hash.split("=")[1];
+		if (!d) {
+			// set the defaults 
+			setDefaultImages();
+			return;
+		}
+		var ds = d.split("&");
+		var imageNodes = document.querySelectorAll(".ex9inner img");
+		for (var i = 0; i < imageNodes.length; ++i) {
+			imageNodes[i].src = document.getElementById(ds[i]).src;
+		}
+	});
+
+	var wheelAngle = 0;
+	var wheelImages = document.querySelectorAll(".ex9inner img");
+	for (var k = 0; k < wheelImages.length; ++k) {
+		wheelImages[k].style.webkitTransform = "rotateY(" + wheelAngle + "deg) translateX(270px)";
+		wheelAngle -= 72;
+	}
+	var wheelElem = document.querySelector(".ex9inner");
+	setInterval(function () {
+		  if (navigator.onLine) {
+		    wheelElem.style.webkitAnimationPlayState = "running";
+		  } else { 
+			wheelElem.style.webkitAnimationPlayState = "paused";
+		  }
+	}, 250);
+
+	</script>
+</slide>
+<!-- photowheel - pinned  1-->
+  <slide>
+	<hgroup>
+		<h2>The Photo Wheel- pinned.</h2>
+		<h3>Transformation and Animation</h3>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="css">
+<b>@-webkit-keyframes</b> rotate {
+    from { -webkit-transform: rotateY(0deg); }
+    to { -webkit-transform: rotateY(-360deg); }
+}
+.picture {
+    <b>-webkit-animation</b>: rotate 6s linear 0s infinite normal;
+    <b>-webkit-transform-origin</b>: 0px 0px;
+    padding-left: 50px;
+    border: 1px solid #ccc;
+    background: rgba(255,255,255,0.2);
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+}
+</pre>
+  <img id="pvpicture" src="images/lion.jpeg" width="200" class="pvpicture"></img>
+	</article>
+</slide>		
+<!-- photowheel pinned 2 -->
+   <slide>
+	    <hgroup>
+	      <h2>The Photo Wheel- pinned.</h2>
+	      <h3>Drag and Drop</h3>
+	    </hgroup>
+	  <article>
+<pre class="prettyprint" data-lang="html">
+&lt;div id="div1" ondrop="drop(event)" ondragover="allowDrop(event);" /&gt;
+&lt;img src="images/sky.jpg" draggable="true" ondragstart="drag(event);" /&gt;
+</pre>
+<pre class="prettyprint" data-lang="javascript" style="width:700px;">
+function allowDrop(ev) { 
+    ev.preventDefault(); 
+}
+function drag(ev) { 
+    ev.dataTransfer.setData("Text",ev.target.id); 
+}
+function drop(ev) {
+    ev.preventDefault();
+    var data=ev.dataTransfer.getData("Text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</pre>
+ <div id="dragDropExample">
+   <div id="dragDropDestId" class="dragDropDest" ondrop="drop(event);" ondragover="allowDrop(event);" />
+     <div style="height: 150px;"></div>
+    <img src="images/sky.jpg" style="float:left;" width="100" height="100" draggable="true" ondragstart="drag(event);" id="drag1" />
+    </div>
+  </div>
+</article>
+</slide>
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+function drag(ev) {
+  ev.dataTransfer.setData("Text",ev.target.id);
+}
+function drop(ev) {
+  ev.preventDefault();
+  var data=ev.dataTransfer.getData("Text");
+  ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</slide>
+<slide>
+	<hgroup>
+		<h2>The Photo Wheel - pinned.</h2>
+		<h3>Network Detection</h3>
+	</hgroup>
+	<article>
+<pre class="prettyprint" data-lang="javascript">
+var photoGroup = <b>document.querySelector</b>(".photoGroup");
+setInterval(function () {
+    if (<b>navigator.onLine</b>) {
+        wheelElem.style.<b>webkitAnimationPlayState</b> = "running";
+    } else { 
+        wheelElem.style.webkitAnimationPlayState = "paused";
+    }
+}, 250);	
+</pre>
+	</article>
+</slide>
+<!-- rotating photowheel - history -->
+<slide>
+	<hgroup>
+		<h2>The Photo Wheel - pinned.</h2>
+		<h3>History API</h3>
+	</hgroup>
+	<article>
+<pre class="prettyprint" data-lang="javascript">
+function saveState(ev) {
+    var imageNodes = document.querySelectorAll(".photoGroup img");
+    var imageIds = getCurrentImageIds();
+    var url = window.location.pathname + "#d=" + imageIds;
+    <b>history.pushState(null, null, url);</b>
+}
+
+window.addEventListener(<b>'popstate'</b>, function(e) {
+    var d = window.location.hash.split("=")[1];
+    setImages(d);
+});
+</pre>
+	</article>
+</slide>
+<!-- magic moment 7 -->
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Magic Moment 7</h2>
+      <h3><br/></h3>
+      <div class="fourstar"></div>
+    </hgroup>
+  </slide>
+<!-- bouncing ball demo -->
+<slide>
+	<hgroup>
+		<h2>The Bouncing Ball</h2>
+		<h3></h3>
+	</hgroup>
+	<article>
+		<canvas width="800" height="400" id="canvas" class="canvas"></canvas>
+		<input type="button" style="position:absolute; left:950px; top: 530px;font-size:48px;" value="start" onclick="runCanvasDemo();" />
+	</article>
+	<span style="position:absolute; top: 580px;left:300px;font-size:18px;">Source:&nbsp;&nbsp;<a href="http://billmill.org/static/canvastutorial/">http://billmill.org/static/canvastutorial/</a></span>
+</slide>
+<!-- bouncing ball caught -1 -->
+<slide>
+	<hgroup>
+	  <h2>The Bouncing Ball - caught.</h2>
+	  <h3>Step 1: Draw the individual components.</h3>
+    </hgroup>
+   <article>
+<pre class="prettyprint" data-lang="html">
+&lt;canvas id="canvas" width="800" height="500"&gt;&lt;/canvas&gt;
+</pre>
+<pre class="prettyprint" data-lang="javascript">
+function initCanvasDemo() {
+    ctx = $('canvas').getContext("2d");
+}
+function circle(x, y, r, color) {
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI*2, true);
+    ctx.closePath();
+    ctx.fillStyle = color; ctx.fill();
+} 
+function rect(x, y, w, h, color) {
+    ctx.beginPath(); ctx.rect(x,y,w,h); ctx.closePath(); 
+    ctx.fillStyle = color; ctx.fill(); 
+}
+</pre>
+<canvas id="canvasExample1" width=250 height=250 style="border:1px solid black;background-color: black;position: absolute; left:750px; top:340px;"></canvas>
+<script>
+  var ctxe = document.getElementById("canvasExample1").getContext("2d");
+  ctxe.beginPath();
+  ctxe.arc(150, 200, 30, 0, Math.PI*2, true);
+  ctxe.closePath();
+  ctxe.fillStyle = "#DD0000"; ctxe.fill();
+  ctxe.beginPath(); ctxe.rect(20,20,100,40); ctxe.closePath(); 
+  ctxe.fillStyle = "#A0CC30"; ctxe.fill();
+</script>
+</article>
+</slide>
+<!-- Bouncing ball caught - 2 -->
+<slide>
+	<hgroup>
+	  <h2>The Bouncing Ball - caught.</h2>
+	  <h3>Step 2: Add motion to the ball.</h3>
+    </hgroup>
+   <article>
+<pre class="prettyprint" data-lang="javascript">
+function draw() {
+    clear("#000000");
+    circle(x, y, 10);
+    if (x + dx > canvasWidth || x + dx &lt; 0)  dx = -dx;
+    if (y + dy > canvasHeight || y + dy &lt; 0) dy = -dy;
+    x += dx;
+    y += dy;
+}
+function clear(backColor) {
+    ctx.fillStyle = backColor;
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    ctx.beginPath(); ctx.rect(0,0,canvasWidth,canvasHeight); 
+    ctx.closePath(); ctx.fill();
+}
+setInterval(draw, 10);
+</pre>
+</article>
+<canvas id="canvasExample2" width=250 height=250 style="border:1px solid black;background-color: black;position: absolute; left:750px; top:340px;"></canvas>
+<script>
+var ctxe2 = document.getElementById("canvasExample2").getContext("2d");
+var canvasE2X = 100;
+var canvasE2Y = 100;
+var canvasWidth = 250;
+var canvasHeight = 250;
+var canvasE2dx = 1.5;
+var canvasE2dy = -4;
+function drawCanvasExample2() {
+    clearCanvasExample2("red");
+    circleCanvasExample2(canvasE2X, canvasE2Y, 10, "black");
+    if (canvasE2X + canvasE2dx > canvasWidth || canvasE2X + canvasE2dx < 0)  canvasE2dx = -canvasE2dx;
+    if (canvasE2Y + canvasE2dy > canvasHeight || canvasE2Y + canvasE2dy < 0) canvasE2dy = -canvasE2dy;
+    canvasE2X += canvasE2dx;
+    canvasE2Y += canvasE2dy;
+}
+function clearCanvasExample2(backColor) {
+    ctxe2.fillStyle = backColor;
+    ctxe2.clearRect(0, 0, canvasWidth, canvasHeight);
+    ctxe2.beginPath(); ctxe2.rect(0,0,canvasWidth,canvasHeight); ctxe2.closePath(); 
+    ctxe2.fill();
+    
+}  
+
+function circleCanvasExample2(x, y, r, color) {
+    ctxe2.arc(x, y, r, 0, Math.PI*2, true);
+    ctxe2.closePath();
+    ctxe2.fillStyle = color; ctxe2.fill();
+}
+setInterval(drawCanvasExample2, 10);
+</script>
+
+</slide>
+<!-- Bouncing ball caught 3 -->
+<slide>
+	<hgroup>
+	  <h2>The Bouncing Ball - caught.</h2>
+	  <h3>Step 3: Restrict bouncing from the handle.</h3>
+    </hgroup>
+   <article>
+<pre class="prettyprint" data-lang="javascript">
+function draw() {
+    clear("#000000"); circle(x, y, 10);
+    if (x + dx > canvasWidth || x + dx < 0)  dx = -dx;
+    if (y + dy > canvasHeight || y + dy < 0)  dy = -dy;
+    // Bounce off the ball only on colliding with the handle.
+    <b>if (x > handleX && x < handleX + handleW)  dy = -dy;</b>
+    <b>else clearInterval(intervalId);</b>
+    x += dx; y += dy;
+}
+function onMouseMove(evt) {
+  if (evt.pageX > canvasMinX && evt.pageX < canvasMaxX) {
+    handleX = evt.pageX - canvasMinX;
+  }
+}
+document.addEventListener("mousemove", onMouseMove, false);
+</pre>
+</article>
+</slide>
+
+<!-- magic moment 8 -->
+<slide class="segue dark nobackground">
+  <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+  <hgroup class="auto-fadein">
+    <h2>Magic Moment 8</h2>
+    <h3><br/></h3>
+
+    <div class="fourstar"></div>
+  </hgroup>
+</slide>
+
+<!-- HTML5 Piano -->
+<slide>
+	<hgroup>
+		<h2>HTM5 Piano</h2>
+		<h3></h3>
+	</hgroup>
+	<article>
+	  <div class="piano">
+        <div class="redline"></div>
+		<div id="ma" class="white key"></div>
+		<div id="ma_" class="black key b1"></div>
+		<div id="pa" class="white key"></div>
+		<div id="dha_" class="black key b2"></div>
+		<div id="dha" class="white key"></div>
+		<div id="ni_" class="black key b3"></div>
+		<div id="ni" class="white key"></div>
+		<!-- octave 1 -->
+		<div id="Sa" class="white key"></div>
+		<div id="Re_" class="black key b4"></div>
+		<div id="Re" class="white key"></div>
+		<div id="Ga_" class="black key b5"></div>
+		<div id="Ga" class="white key"></div>
+		<div id="Ma" class="white key"></div>
+		<div id="Ma_" class="black key b6"></div>
+		<div id="Pa" class="white key"></div>
+		<div id="Dha_" class="black key b7"></div>
+		<div id="Dha" class="white key"></div>
+		<div id="Ni_" class="black key b8"></div>
+		<div id="Ni" class="white key"></div>
+		<!-- octave 2 -->
+		<div id="SA" class="white key"></div>
+		<div id="RE_" class="black key b9"></div>
+		<div id="RE" class="white key"></div>
+		<div id="GA_" class="black key b10"></div>
+		<div id="GA" class="white key"></div>
+		<div id="MA" class="white key"></div>
+		<div id="MA_" class="black key b11"></div>
+		<div id="PA" class="white key"></div>
+		<div id="DHA_" class="black key b12"></div>
+		<div id="DHA" class="white key"></div>
+		<div id="NI_" class="black key b13"></div>
+		<div id="NI" class="white key"></div>
+	</div>
+	<div style="font-size:16px;float:right;margin-top:35px;margin-right:50px;">css inspiration:&nbsp;&nbsp;<a href="http://www.html5piano.ilinov.eu/">http://www.html5piano.ilinov.eu</a></div>
+	<input type="button" style="margin-left:20px;margin-top: 35px;" value="happy birthday!" onclick="playHappyBirthday();"/>
+	</article>
+</slide>
+<script>
+var hbdCurKey = 0;
+var divHBD = ["Sa", "Sa", "Re", "Sa", "Ma", "Ga", /**/ "Sa", "Sa", "Re", "Sa", "Pa", "Ma", /**/ "Sa", "Sa", "Dha", "Pa", "Ma", "Ga", "Re", /**/ "Ni_", "Ni_", "Dha", "Ma", "Pa", "Ma"];
+
+//SaSa Re-Sa Ma-Ga  : Happy Birthday to you
+//SaSa Re-Sa Pa-Ma  : Happy Birthday to you
+//SaSa Dha-Pa MaMa Ga-Re  : Happy Birthday dear friend
+//nini Dha-Ma Pa-Ma  : Happy Birthday to you
+
+function fireEvent(element,event) {
+   if (document.createEvent) {
+       // dispatch for firefox + others
+       var evt = document.createEvent("HTMLEvents");
+       evt.initEvent(event, true, true ); // event type,bubbling,cancelable
+       return !element.dispatchEvent(evt);
+   } else {
+       // dispatch for IE
+       var evt = document.createEventObject();
+       return element.fireEvent('on'+event,evt)
+   }
+}
+function playHappyBirthday() {
+	if (hbdCurKey < divHBD.length) {
+		if (hbdCurKey > 0) {
+			document.getElementById(divHBD[hbdCurKey-1]).classList.remove("pressed");
+		}
+		fireEvent(document.getElementById(divHBD[hbdCurKey]), "mousedown");
+		document.getElementById(divHBD[hbdCurKey]).classList.add("pressed");
+		hbdCurKey++;
+	    setTimeout(playHappyBirthday, 500);
+    } else {
+		document.getElementById(divHBD[hbdCurKey-1]).classList.remove("pressed");
+	    hbdCurKey = 0;
+	}
+}
+</script>
+
+
+<!-- HTML5 Piano Cracked -->
+<slide>
+	<hgroup>
+		<h2>HTML5 Piano - cracked.</h2>
+		<h3>The audio header</h3>
+	</hgroup>
+  <article>
+<pre class="prettyprint" data-lang="javascript">
+var header = new Uint8Array([
+    0x52,0x49,0x46,0x46, // "RIFF"
+    0, 0, 0, 0,          // put total size here
+    0x57,0x41,0x56,0x45, // "WAVE"
+    0x66,0x6d,0x74,0x20, // "fmt "
+    16,0,0,0,            // size of the following
+    1, 0,                // PCM format
+    1, 0,                // Mono: 1 channel
+    0x44,0xAC,0,0,       // 44,100 samples per second
+    0x88,0x58,0x01,0,    // byte rate: two bytes per sample
+    2, 0,                // aligned on every two bytes
+    16, 0,               // 16 bits per sample
+    0x64,0x61,0x74,0x61, // "data"
+    0, 0, 0, 0           // put number of samples here
+]).buffer;  // Note: we just want the ArrayBuffer.
+</pre>
+</article>
+</slide>
+<!-- HTML5 Piano Cracked - 2-->
+<slide>
+	<hgroup>
+		<h2>HTML5 Piano - cracked.</h2>
+		<h3>Audio synthesis</h3>
+	</hgroup>
+  <article>
+<pre class="prettyprint" data-lang="javascript">
+function makeWave(samples) {
+    var bb = new WebKitBlobBuilder();
+    var dv = new DataView(header);
+    dv.setInt32(4, 36 + samples.length, true);
+    dv.setInt32(40, samples.length, true);
+    bb.append(header);
+    bb.append(samples.buffer);
+    return bb.getBlob('audio/wav');
+}
+
+</pre>
+</article>
+</slide>
+<!-- HTML5 Piano Cracked - 3-->
+<slide>
+	<hgroup>
+		<h2>HTML5 Piano - cracked.</h2>
+		<h3>Playing the audio</h3>
+	</hgroup>
+  <article>
+<pre class="prettyprint" data-lang="javascript">
+function playNote(frequency, duration) {
+    var samplespercycle = 44100 / frequency;
+    var samples = new Uint16Array(44100 * duration);
+    var da = 2 * Math.PI / samplespercycle;
+    for (var i = 0, a = 0; i < samples.length; i++, a += da) {
+        samples[i] = Math.floor(Math.sin(a) * 32768);
+    }
+    var blob = makeWave(samples);
+    var url = window.webkitURL.createObjectURL(blob);
+    var player = new Audio(url);
+    player.play();
+    player.addEventListener('ended', 
+        function(e) {window.webkitURL.revokeObjectURL(url);}, false);
+}
+</pre>
+
+<span style="font-weight:bold;position:absolute;top:650px;left:200px;font-size:16px;color:#800000;">
+Frequency:&nbsp;&nbsp;<input type="number" value="220" style="width:50px;" id="audioExampleFreq"/>
+<input type="button" value="play note" id="playNoteExampleBtn();" onclick="document.getElementById('audioExampleUrl').value=playNote(document.getElementById('audioExampleFreq').value, 2);">
+&nbsp;&nbsp;URL:&nbsp;&nbsp;<input type="text" id="audioExampleUrl" value="" style="border:1px solid #800000;" size="90"></input>
+</div>
+</article>
+</slide>
+<!-- magic moment 9 -->
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Magic Moment 9</h2>
+      <h3><br/></h3>
+
+      <div class="fivestar"></div>
+    </hgroup>
+  </slide>
+<!-- HTML5 Terminal -->
+<slide>
+  <hgroup>
+    <h2>HTML5 Terminal</h2>
+  </hgroup>
+  <article>
+    <iframe style="margin-top:-20px;" data-src="http://www.htmlfivewow.com/demos/terminal/terminal.html"></iframe>
+  </article>
+<span style="font-size:16px;margin-left: 250px;"><b>source</b>:&nbsp;&nbsp;<a href="http://www.htmlfivewow.com/demos/terminal/terminal.html">http://www.htmlfivewow.com/demos/terminal/terminal.html</a></span>
+</slide>
+<!-- HTML Terminal demystified 2 -->
+<slide>
+	<hgroup>
+		<h2>HTML5 Terminal - demystified.</h2>
+		<h3>requestFileSystem, getFile, fileReader, fileWriter</h3>
+	</hgroup>
+<article>
+<pre class="prettyprint" data-lang="javascript">
+
+// Getting handle to the file system.
+window.requestFileSystem(window.TEMPORARY, 5*1024*1024 /*5MB*/, 
+    function (fs) { ... }, errorHandler);
+// Creating a file.
+fs.root.getFile('log.txt', {create: true, exclusive: true}, 
+    function(fileEntry) { .. }, errorHandler);
+// Reading a file.
+fileEntry.file(function(file) { ...}, errorHandler};
+// Writing or appending to a file.
+fileEntry.createWriter(function(fileWriter) { ....}, errorHandler);
+// Removing a file.
+fileEntry.remove(function() { ..}, errorHandler);
+</pre>
+</article>
+</slide>
+<!-- Magic moment 10 -->
+<slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Magic Moment 10</h2>
+      <h3><br/></h3>
+
+      <div class="fivestar"></div>
+    </hgroup>
+  </slide>
+<!-- Bookcase demo -->
+<slide>
+	<hgroup>
+	      <h2>The WebGL BookCase</h2>
+	      <h3></h3>
+	    </hgroup>
+		<article>
+		<iframe data-src="http://workshop.chromeexperiments.com/bookcase/" style="height:450px;"></iframe>
+		<span style="font-size:16px;margin-left: 250px;"><b>source</b>:&nbsp;&nbsp;<a href="http://workshop.chromeexperiments.com/bookcase/">http://workshop.chromeexperiments.com/bookcase/</a></span>
+		</article>
+	</slide>
+<!-- wrap up -->
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Wrapping it all</h2>
+	  <h3>It's only the beginning...</h3>
+    </hgroup>
+  </slide>
+<!-- some more demos -->
+<slide>
+	<hgroup>
+		<h2>Some more demos</h2>
+		<h3>..that will make you say 'wow'!</h3>
+	</hgroup>
+	<article>
+	<div class="moreDemoLink"><a href="http://thecodeplayer.com/walkthrough/make-a-particle-system-in-html5-canvas">Particle System using Canvas</a></div>
+	<div class="moreDemoLink"><a href="http://lights.elliegoulding.com/">An interactive music experience</a></div>
+	<div class="moreDemoLink"><a href="http://oos.moxiecode.com/js_webgl/forest/index.html">Endless forest</a></div>
+	<div class="moreDemoLink"><a href="https://developer.mozilla.org/en-US/demos/detail/planetary-system/launch">Planetory System</a></div>
+	<div class="moreDemoLink"><a href="http://eminkura.com/html5/eyes/">Following eyes</a></div>
+	<div class="moreDemoLink"><a href="http://htmlfive.appspot.com/static/stickies.html">HTML5 Stickies</a></div>
+	<div class="moreDemoLink"><a href="http://everytimezone.com/">Every time zone</a></div>
+	<div class="moreDemoLink"><a href="http://studio.html5rocks.com/#Photos">Drag photos from desktop</a></div>
+	<div class="moreDemoLink"><a href="http://craftymind.com/factory/html5video/CanvasVideo.html">Blow up the video!</a></div>
+	<div class="moreDemoLink"><a href="http://neave.com/webcam/html5/">Camera Effects</a></div>
+	<div class="moreDemoLink"><a href="http://www.htmlfivewow.com/demos/photo-gallery/index.html">Photo gallery</a></div>
+	<div class="moreDemoLink"><a href="http://andrew-hoyer.com/experiments/walking/">The walking man</a></div>
+	<div class="moreDemoLink"><a href="http://www.htmlfivewow.com/slide52">Dancing chrome logo</a></div>
+	<div class="moreDemoLink"><a href="http://www.satine.org/research/webkit/snowleopard/snowstack.html">Snow Stack</a></div>
+	</article>
+</slide>
+<!-- dive deeper -->
+<slide>
+	<hgroup>
+	      <h2>Dive Deeper</h2>
+		    <h3>...if you are searching for pearls.</h3>
+	</hgroup>
+	<article>
+	       <ul>
+		   <li><b>Articles:</b>&nbsp;&nbsp;<a href="http:/www.html5rocks.com">html5rocks.com</a>&nbsp;&nbsp;<a href="http://diveintohtml5.info">diveintohtml5.info</a><br/><br/></li>
+		   <li><b>Presentations:</b>&nbsp;&nbsp;<a href="http://htmlfivecan.com">htmlfivecan.com</a>&nbsp;&nbsp;<a href="http://htmlfivewow.com">htmlfivewow.com</a><br/><br/></li>
+		   <li><b>Demos:</b>&nbsp;&nbsp;<a href="http://www.chromeexperiments.com/">chromeexperiments.com</a>&nbsp;&nbsp;<a href="http://html5demos.com/">html5demos.com</a><br/><br/><li/>
+		   <li><b>Compatibility:</b>&nbsp;&nbsp;<a href="http://caniuse.com">caniuse.com</a>&nbsp;&nbsp;<a href="http://html5please.com/">html5please.com</a>&nbsp;&nbsp;<a href="http://modernizr.com">modernizr.com</a><br/><br/></li>
+		   <li><b>Ask:</b>&nbsp;&nbsp;<a href="http://groups.google.com/a/chromium.org/group/chromium-html5">groups.google.com/a/chromium.org/group/chromium-html5</a><br/><br/></li>
+		   <li><b>File Bugs:</b>&nbsp;&nbsp;<a href="http://crbugs.com">crbug.com</a><br/><br/></li>
+	
+    </article>	
+</slide>
+  <slide class="thank-you-slide2 segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2 style="margin-top:-100px;"><img src="images/html5_sticker.png" height="400" /></h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="logoslide dark nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/google_developers_logo_white.png"></span>
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+</html>
