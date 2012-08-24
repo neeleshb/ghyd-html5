@@ -26,9 +26,15 @@ URL: https://code.google.com/p/io-2012-slides
   <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
 </head>
 <body style="opacity: 0;height:740px; width:1680px;">
-
+<script>
+if (navigator.userAgent.indexOf("Chrome") == -1) {
+	document.getElementById("browserMsg").style.display = "block";
+} else {
+	document.getElementById("browserMsg").style.display = "none";
+}
+</script>
+<div id="browserMsg" style="border-radius:10px;position:absolute;top:10px;left:310px;font-size:37px;padding:10px;color:#202020;background:#D0D0D0;display:none;">Please use latest version of <a href="https://www.google.com/intl/en/chrome/browser/" target="_blank">Google Chrome</a> to view this presentation.</div>
 <slides class="layout-widescreen">
-
   <slide class="logoslide nobackground">
     <article class="flexbox vcenter">
       <span><img src="images/google_developers_logo.png"></span>
@@ -354,6 +360,7 @@ function takePhoto() {
 	    <div id="faceF" class="cubeFace cubeFaceF"></div>
 	  </div>
      </div>
+    <div style="position:absolute;top:600px;left:800px;font-size:18px;color:#000000;">Use keys 1 to 6 to rotate the cube.</div>
 	</article>
 <script>
 setInterval(
@@ -394,7 +401,6 @@ setInterval(
 <div class="cubeExample cubeExample4">4</div>
 <div class="cubeExample cubeExample5">5</div>
 <div class="cubeExample cubeExample6">6</div>
-
  </slide>
 <!-- Rotating Cube unfolded - 2 -->
   <slide>
@@ -444,6 +450,7 @@ setInterval(
 	document.querySelector(".cubeEx1").classList.remove("cubeEx1H"); 
 }, false);
 </script>
+<div style="position:absolute;top:660px;left:700px;font-size:14px;">try mouseover on each figure.</div>
 </slide>
 <!-- Rotating Cube unfolded - 3 -->
   <slide>
@@ -474,6 +481,8 @@ setInterval(
 <div class="cubeFx cubeFx5">5</div>
 <div class="cubeFx cubeFx6">6</div> 
 </div>
+<div style="position:absolute;top:350px;left:870px;font-size:14px;">try mouseover.</div>
+
 <span style="position:absolute; top: 540px; left: 890px; font-size:16px;">
 	  <a href="http://jsbin.com/iwodux/4/edit" style="margin-left:-130px;">non-commutative transformations</a><div style="height:10px;"></div>
 	 <input type="checkbox" onclick="var nd = document.querySelector('.cubeFxOuter'); this.checked ? nd.classList.add('cubeFxOuterP') : nd.classList.remove('cubeFxOuterP');"  />use perspective.<div style="height:5px;"></div>
@@ -598,6 +607,8 @@ document.addEventListener('keypress', rotateCube, false);
 		       <div class="layer" style="position: absolute; left: 0px; top: 0px; transform: rotateY(0deg) rotateX(0deg); "><img src="images/chrome-layer-05.png"></div>
 		   </div>
 	   </div>
+	<div style="position:absolute;top:650px;left:300px;font-size:14px;">Works only if your laptop has accelerometer. Try bending the laptop.</div>
+	
 	</article>
   </slide>
 <!-- Bend It Like Beckham - straightened-->
@@ -640,6 +651,7 @@ window.addEventListener('deviceorientation', function(event) {
 		<h2>The Photo Wheel</h2>
 	</hgroup>
 	<article>
+		<div style="position:absolute;top:100px;left:70px;font-size:14px;">Try dragging one of the small photos on the wheel. Try back-button on the browser. Try going offline and then come back online.</div>
 			<div class="ex9outer">
 			   <div class="ex9inner">
 			     <img ondrop="drop1(event);" id="imgdr1" ondragover="allowDrop1(event);"  width="340"></img>
@@ -1221,6 +1233,7 @@ fileEntry.remove(function() { ..}, errorHandler);
 		<article>
 		<iframe data-src="http://workshop.chromeexperiments.com/bookcase/" style="height:450px;"></iframe>
 		<span style="font-size:16px;margin-left: 250px;"><b>source</b>:&nbsp;&nbsp;<a href="http://workshop.chromeexperiments.com/bookcase/">http://workshop.chromeexperiments.com/bookcase/</a></span>
+		<div style="position:absolute;top:650px;left:300px;font-size:14px;">Try dragging the mouse horizontally on the bookshelf.</div>
 		</article>
 	</slide>
 <!-- wrap up -->
